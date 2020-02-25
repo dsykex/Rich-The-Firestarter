@@ -1,0 +1,7 @@
+{
+  "name": "RichAppp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

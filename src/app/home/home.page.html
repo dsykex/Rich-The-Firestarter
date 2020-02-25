@@ -1,0 +1,29 @@
+<div class="header">
+  <img width="50" height="50" src="../../assets/imgs/landing-logo.png" alt="" class="logo" />
+
+</div>
+<ion-content>
+  <ion-fab vertical="top" horizontal="start">
+    <ion-fab-button><ion-icon name="add"></ion-icon></ion-fab-button>
+  
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="userPage()"><ion-icon name="person"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="openLink('')"><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+      <ion-fab-button *ngIf="user && authService.isAdmin(user)"><ion-icon name="settings"></ion-icon></ion-fab-button>
+      <ion-icon name="log-out" class="logoutBtn"></ion-icon>
+    </ion-fab-list>
+  </ion-fab>
+
+  <ion-slides #slides [options]="slideOpts" (ionSlideWillChange)="slideChanged()">
+    <ion-slide>
+      <ion-icon name="time"></ion-icon>
+      <h1>Book A Session</h1>
+    </ion-slide>
+    <ion-slide>
+      <ion-icon name="musical-note"></ion-icon>
+      <h1>Beats</h1>
+    </ion-slide>
+  </ion-slides>
+  <div class="gradient-bg"></div>
+  <img [src]="slideImg" alt="" class="bgImg"/>
+</ion-content>
