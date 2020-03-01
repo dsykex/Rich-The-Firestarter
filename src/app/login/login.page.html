@@ -6,7 +6,7 @@
     <img width="70" height="70" src="../../assets/imgs/landing-logo.png" alt="" class="logo" />
    
       <ion-item  [ngStyle]="{'background':'none'}">
-        <ion-label style="color:#fff" position="floating">Username</ion-label>
+        <ion-label style="color:#fff" position="floating">Email</ion-label>
         <ion-input [(ngModel)]="user.email" type="text"></ion-input>
       </ion-item>
 
@@ -22,10 +22,10 @@
   <ion-grid>
     <ion-row>
       <ion-col col-6>
-          <ion-button expand="block" (click)="login()">Login</ion-button>
+          <ion-button color="primary" expand="block" (click)="login()">Login</ion-button>
       </ion-col>
       <ion-col col-6>
-          <ion-button expand="block" (click)="signup()">Signup</ion-button>
+          <ion-button color="primary" expand="block" (click)="signup()">Signup</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

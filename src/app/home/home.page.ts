@@ -1,7 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, AlertController, NavController } from '@ionic/angular';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import * as firebase from '../fbconfig';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   public slideOpts = {
-    effect: 'flip',
+    effect: 'cube',
     speed: 350
   }
 
@@ -20,7 +21,7 @@ export class HomePage implements OnInit {
   slideImg: any;
   user: any = {};
 
-  constructor(public router: Router, public authService: AuthService) {}
+  constructor(public router: Router, public navCtrl: NavController, public alertCtrl: AlertController, public authService: AuthService) {}
 
   ngOnInit()
   {
@@ -45,8 +46,35 @@ export class HomePage implements OnInit {
     this.slideImg = this.slideBgs[index];
   }
 
+  openPage(page)
+  {
+    this.navCtrl.navigateForward(page);
+  }
+
   openLink(url)
   {
 
+  }
+
+  async logout()
+  { 
+    let confirmLogout = this.alertCtrl.create({
+      message: 'Are you sure?',
+      buttons: [{
+        text: 'No',
+        handler: data => {},
+        role: 'cancel'
+      }, 
+      {
+        text: 'Yes',
+        handler: data=> {
+          firebase.default.auth().signOut().then(() => {
+            this.navCtrl.navigateBack('/login');
+          })
+        }
+      }]
+    })
+
+    await (await confirmLogout).present();
   }
 }

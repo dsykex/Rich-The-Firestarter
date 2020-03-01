@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { FunctionsService } from '../functions.service';
 
 @Component({
   selector: 'app-beats',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BeatsPage implements OnInit {
 
-  constructor() { }
+  constructor(public navCtrl: NavController, public functions: FunctionsService) { }
 
   ngOnInit() {
+
   }
+
+ 
 
 }

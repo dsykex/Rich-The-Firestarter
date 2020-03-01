@@ -9,17 +9,21 @@
     <ion-fab-list side="bottom">
       <ion-fab-button (click)="userPage()"><ion-icon name="person"></ion-icon></ion-fab-button>
       <ion-fab-button (click)="openLink('')"><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="openLink('')"><ion-icon name="logo-youtube"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="openLink('')"><ion-icon name="logo-instagram"></ion-icon></ion-fab-button>
+      <ion-fab-button (click)="openLink('')"><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
+      
       <ion-fab-button *ngIf="user && authService.isAdmin(user)"><ion-icon name="settings"></ion-icon></ion-fab-button>
-      <ion-icon name="log-out" class="logoutBtn"></ion-icon>
+      <ion-icon name="log-out" (click)="logout()" class="logoutBtn"></ion-icon>
     </ion-fab-list>
   </ion-fab>
 
   <ion-slides #slides [options]="slideOpts" (ionSlideWillChange)="slideChanged()">
-    <ion-slide>
+    <ion-slide (click)="openPage('/book-session')"> 
       <ion-icon name="time"></ion-icon>
       <h1>Book A Session</h1>
     </ion-slide>
-    <ion-slide>
+    <ion-slide (click)="openPage('/beats')"> 
       <ion-icon name="musical-note"></ion-icon>
       <h1>Beats</h1>
     </ion-slide>
