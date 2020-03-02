@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { FunctionsService } from '../functions.service';
+import {SettingsService} from '../settings.service';
 
 @Component({
   selector: 'app-beats',

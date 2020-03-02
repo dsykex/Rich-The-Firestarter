@@ -1,0 +1,29 @@
+.text-center
+{
+    text-align:center;
+}
+
+.price{
+    text-align:center;
+    color:green;
+}
+
+.priceText
+{
+    font-size:15px;
+    color:#ccc;
+    margin:2px;
+    text-align: center;
+}
+
+ion-content{
+    --background:#111;
+}
+
+ion-card{
+    --background:#000;
+}
+
+ion-item{
+    --background:none;
+}

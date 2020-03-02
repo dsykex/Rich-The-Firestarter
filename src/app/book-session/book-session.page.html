@@ -1,9 +1,64 @@
 <ion-header (click)="functions.pop(navCtrl)">
   <ion-toolbar>
-    <ion-title>book-session</ion-title>
+    <ion-title class="text-center">
+      New Session
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content padding>
+  <ion-grid>
+      <ion-row>
+          <ion-col col-12>
+              <ion-card class="animated fadeIn">
+                  <ion-card-content>
+                        <p *ngIf="settings" class="text-center priceText">Sessions are set at <b>${{settings.pricePerHour}}</b> per hour.</p>
+                        <p *ngIf="session.hours" class="text-center priceText">Session will be done at <b>{{session.endDate}}</b> at <b style="color:#d22300">{{session.endTime}}</b>              
+                  </ion-card-content>
+              </ion-card>
+              <h2 *ngIf="session.hours" class="price animated bounceIn">${{price}}</h2>
+                        
+              <ion-item>
+                  <ion-label>Date:</ion-label>
+                  <ion-datetime (ionChange)="updateSessionInfo(session.sTime)" [(ngModel)]="session.date" min="{{currentYear}}"></ion-datetime>
+              </ion-item>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12>
+              <ion-item *ngIf="session.date" class="animated fadeIn">
+                  <ion-label>Start Time:</ion-label>
+                  <ion-datetime (ionChange)="updateSessionInfo(session.sTime)" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="session.sTime"></ion-datetime>
+              </ion-item>
+          </ion-col>
+          <ion-col col-12>
+              <ion-item *ngIf="session.sTime" class="animated fadeIn">
+                  <ion-label>Hours:</ion-label>
+                  <ion-input (ionChange)="updateSessionInfo(session.sTime)" type="number" [(ngModel)]="session.hours"></ion-input>
+              </ion-item>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col col-12 style="margin-top:15px;">
+                <ion-item>
+                    <ion-textarea placeholder="Extra notes about your session" [(ngModel)]="session.notes" rows="7">
 
-<ion-content>
-  
+                    </ion-textarea>
+                </ion-item>
+          </ion-col>
+      </ion-row>
+      <br/>
+      <ion-list *ngIf="session.hours" class="animated fadeInUp">
+        <ion-item>
+          <ion-label>Choose your payment option</ion-label>
+          <ion-select [(ngModel)]="session.payment">
+            <ion-select-option value="cash">Cash</ion-select-option>
+            <ion-select-option value="cashapp">CashApp</ion-select-option>
+            <ion-select-option value="paypal">PayPal</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+  </ion-grid>
 </ion-content>
+<ion-footer *ngIf="session.payment" class="animated slideInUp">
+    <ion-button expand="block" (click)="bookSession()">Book Session</ion-button>
+</ion-footer>
